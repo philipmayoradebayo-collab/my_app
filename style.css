@@ -1,0 +1,418 @@
+
+/* ==================================================
+   DAYBOOK — TO-DO APP
+   Main colours, layout and styling
+================================================== */
+
+
+/* ---------- 1. CSS VARIABLES ---------- */
+
+:root {
+    --bg: #171D2B;
+    --surface: #222B3B;
+    --surface-light: #2B3648;
+
+    --text: #F1EBDD;
+    --muted: #A5ADBA;
+
+    --teal: #72B8A5;
+    --teal-dark: #203E3A;
+
+    --orange: #E6A15A;
+
+    --line: rgba(241, 235, 221, 0.12);
+
+    --serif: 'Source Serif 4', Georgia, serif;
+    --sans: 'Inter', Arial, sans-serif;
+    --mono: 'IBM Plex Mono', monospace;
+}
+
+
+/* ---------- 2. GENERAL RESET ---------- */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+
+/* ---------- 3. MAIN PAGE ---------- */
+
+.page {
+    width: 100%;
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 65px 28px 40px;
+}
+
+
+/* ---------- 4. HEADER ---------- */
+
+.header {
+    margin-bottom: 55px;
+}
+
+.eyebrow {
+    margin-bottom: 12px;
+    color: var(--teal);
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 2px;
+}
+
+.title {
+    color: var(--text);
+    font-family: var(--serif);
+    font-size: clamp(42px, 8vw, 64px);
+    font-weight: 600;
+    line-height: 1.1;
+    letter-spacing: -2px;
+}
+
+.subtitle {
+    margin-top: 12px;
+    color: var(--muted);
+    font-family: var(--serif);
+    font-size: 17px;
+    font-style: italic;
+}
+
+
+/* ---------- 5. TASK ENTRY FORM ---------- */
+
+.entry-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    min-height: 65px;
+    padding: 10px 0;
+
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+}
+
+.entry-index {
+    min-width: 28px;
+    color: var(--orange);
+    font-family: var(--mono);
+    font-size: 12px;
+}
+
+.entry-input {
+    flex: 1;
+    min-width: 0;
+
+    padding: 12px 0;
+
+    border: none;
+    outline: none;
+
+    background: transparent;
+    color: var(--text);
+
+    font-family: var(--sans);
+    font-size: 14px;
+}
+
+.entry-input::placeholder {
+    color: var(--muted);
+    opacity: 0.8;
+}
+
+.add-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 11px 18px;
+
+    border: none;
+    border-radius: 6px;
+
+    background: var(--teal);
+    color: #14231F;
+
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 700;
+
+    cursor: pointer;
+    transition: background 0.2s ease,
+                transform 0.2s ease;
+}
+
+.add-btn:hover {
+    background: #91CFBD;
+    transform: translateY(-2px);
+}
+
+
+/* ---------- 6. FILTER BUTTONS ---------- */
+
+.filter-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    margin-top: 35px;
+    margin-bottom: 25px;
+}
+
+.filter-btn {
+    padding: 9px 17px;
+
+    border: 1px solid transparent;
+    border-radius: 30px;
+
+    background: transparent;
+    color: var(--muted);
+
+    font-family: var(--sans);
+    font-size: 12px;
+
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.filter-btn:hover {
+    color: var(--text);
+    border-color: var(--line);
+}
+
+.filter-btn.is-active {
+    border-color: var(--teal);
+    background: var(--teal-dark);
+    color: var(--teal);
+}
+
+
+/* ---------- 7. TASK LIST ---------- */
+
+.list-section {
+    min-height: 190px;
+}
+
+.task-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    list-style: none;
+}
+
+.task-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    padding: 15px 16px;
+
+    border: 1px solid var(--line);
+    border-radius: 8px;
+
+    background: var(--surface);
+
+    transition: background 0.2s ease,
+                border-color 0.2s ease;
+}
+
+.task-item:hover {
+    background: var(--surface-light);
+    border-color: rgba(114, 184, 165, 0.4);
+}
+
+
+/* ---------- 8. TASK CHECKBOX ---------- */
+
+.task-check {
+    width: 17px;
+    height: 17px;
+
+    flex-shrink: 0;
+
+    accent-color: var(--teal);
+    cursor: pointer;
+}
+
+
+/* ---------- 9. TASK TEXT ---------- */
+
+.task-text {
+    flex: 1;
+
+    color: var(--text);
+    font-size: 13px;
+
+    overflow-wrap: anywhere;
+}
+
+.task-item.is-completed .task-text {
+    color: var(--muted);
+    text-decoration: line-through;
+    opacity: 0.65;
+}
+
+
+/* ---------- 10. DELETE BUTTON ---------- */
+
+.delete-btn {
+    padding: 6px 10px;
+
+    border: 1px solid var(--line);
+    border-radius: 5px;
+
+    background: transparent;
+    color: var(--muted);
+
+    font-family: var(--sans);
+    font-size: 11px;
+
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.delete-btn:hover {
+    border-color: var(--orange);
+    color: var(--orange);
+}
+
+
+/* ---------- 11. EMPTY STATE ---------- */
+
+.empty-state {
+    display: none;
+
+    padding: 45px 10px;
+
+    color: var(--muted);
+    font-family: var(--serif);
+    font-size: 17px;
+    font-style: italic;
+    text-align: center;
+}
+
+.empty-state.is-visible {
+    display: block;
+}
+
+
+/* ---------- 12. FOOTER ---------- */
+
+.footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-top: 35px;
+    padding-top: 18px;
+
+    border-top: 1px solid var(--line);
+}
+
+.task-count {
+    color: var(--muted);
+    font-family: var(--mono);
+    font-size: 11px;
+}
+
+.clear-btn {
+    padding: 8px 12px;
+
+    border: none;
+    border-radius: 5px;
+
+    background: transparent;
+    color: var(--orange);
+
+    font-family: var(--sans);
+    font-size: 12px;
+
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.clear-btn:hover {
+    background: rgba(230, 161, 90, 0.1);
+}
+
+
+/* ---------- 13. FOCUS ACCESSIBILITY ---------- */
+
+button:focus-visible,
+input:focus-visible {
+    outline: 2px solid var(--teal);
+    outline-offset: 4px;
+}
+
+
+/* ---------- 14. MOBILE RESPONSIVENESS ---------- */
+
+@media (max-width: 480px) {
+
+    .page {
+        padding: 45px 20px 30px;
+    }
+
+    .header {
+        margin-bottom: 40px;
+    }
+
+    .title {
+        font-size: 45px;
+    }
+
+    .entry-row {
+        gap: 10px;
+    }
+
+    .add-btn {
+        padding: 10px 12px;
+    }
+
+    .filter-row {
+        gap: 5px;
+    }
+
+    .filter-btn {
+        padding: 8px 13px;
+        font-size: 11px;
+    }
+
+    .task-item {
+        gap: 10px;
+        padding: 13px 10px;
+    }
+
+    .footer {
+        gap: 10px;
+    }
+}
+
+
+/* ---------- 15. REDUCED MOTION ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+    }
+}
